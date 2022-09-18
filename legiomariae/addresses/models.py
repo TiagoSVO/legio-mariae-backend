@@ -62,7 +62,7 @@ class City(models.Model):
         verbose_name_plural = "Cidades"
 
     def __str__(self):
-        return f'${self.name}'
+        return f'{self.name}'
 
     @classmethod
     def serialize_fields_for_selected_by_state(cls, state_id):
