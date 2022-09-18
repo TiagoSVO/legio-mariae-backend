@@ -5,6 +5,7 @@ class Country(models.Model):
     name = models.CharField(max_length=100, verbose_name="Nome do País")
     code = models.CharField(max_length=5, verbose_name="Código do país")
     acronym = models.CharField(max_length=3, verbose_name="Sigla")
+    phone_code = models.CharField(max_length=5, verbose_name="Código de Telefone do país")
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -19,7 +20,7 @@ class Country(models.Model):
 
 class State(models.Model):
     name = models.CharField(max_length=100, verbose_name="Nome do Estado")
-    code = models.CharField(max_length=5, verbose_name="Código do Estado")
+    phone_code = models.CharField(max_length=5, verbose_name="Código de Telefone do Estado")
     acronym = models.CharField(max_length=3, verbose_name="Sigla")
 
     country = models.ForeignKey(Country, on_delete=models.CASCADE, verbose_name="País")
