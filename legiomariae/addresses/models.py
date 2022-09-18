@@ -2,10 +2,10 @@ from django.db import models
 
 
 class Country(models.Model):
-    name = models.CharField(max_length=100, verbose_name="Nome do País")
-    code = models.CharField(max_length=5, verbose_name="Código do país")
-    acronym = models.CharField(max_length=3, verbose_name="Sigla")
-    phone_code = models.CharField(max_length=5, verbose_name="Código de Telefone do país")
+    name = models.CharField(max_length=100, verbose_name="Nome do País", null=False, blank=False)
+    code = models.CharField(max_length=5, verbose_name="Código do país", null=False, blank=False)
+    acronym = models.CharField(max_length=3, verbose_name="Sigla", null=False, blank=False)
+    phone_code = models.CharField(max_length=5, verbose_name="Código de Telefone do país", null=False, blank=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -19,11 +19,11 @@ class Country(models.Model):
 
 
 class State(models.Model):
-    name = models.CharField(max_length=100, verbose_name="Nome do Estado")
-    phone_code = models.CharField(max_length=5, verbose_name="Código de Telefone do Estado")
-    acronym = models.CharField(max_length=3, verbose_name="Sigla")
+    name = models.CharField(max_length=100, verbose_name="Nome do Estado", null=False, blank=False)
+    phone_code = models.CharField(max_length=5, verbose_name="Código de Telefone do Estado", null=True, blank=True)
+    acronym = models.CharField(max_length=3, verbose_name="Sigla", null=False, blank=False)
 
-    country = models.ForeignKey(Country, on_delete=models.CASCADE, verbose_name="País")
+    country = models.ForeignKey(Country, on_delete=models.CASCADE, verbose_name="País", null=False, blank=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -50,9 +50,9 @@ class State(models.Model):
 
 
 class City(models.Model):
-    name = models.CharField(max_length=100, verbose_name="Nome da Cidade")
+    name = models.CharField(max_length=100, verbose_name="Nome da Cidade", null=False, blank=False)
 
-    state = models.ForeignKey(State, on_delete=models.CASCADE, verbose_name='Estado')
+    state = models.ForeignKey(State, on_delete=models.CASCADE, verbose_name='Estado', null=False, blank=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
