@@ -20,7 +20,6 @@ class Country(models.Model):
 
 class State(models.Model):
     name = models.CharField(max_length=100, verbose_name="Nome do Estado", null=False, blank=False)
-    phone_code = models.CharField(max_length=5, verbose_name="Código de Telefone do Estado", null=True, blank=True)
     acronym = models.CharField(max_length=3, verbose_name="Sigla", null=False, blank=False)
 
     country = models.ForeignKey(Country, on_delete=models.CASCADE, verbose_name="País", null=False, blank=False)
