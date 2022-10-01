@@ -1,4 +1,5 @@
 from django.db import models
+from addresses.models import Address
 
 
 class OrganizationType(models.Model):
@@ -61,3 +62,16 @@ class Organization(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+
+
+class OrganizationAddress(Address):
+    organization = models.ForeignKey('Organization', on_delete=models.CASCADE, verbose_name="Organização")
+
+    class Meta:
+        verbose_name = "Endereço da Organização"
+        verbose_name_plural = "Endereços das Organização"
+
+    def __str__(self):
+        return f'{self.our_blessed_lady_title.name} - {self.address_line}'
+
+
