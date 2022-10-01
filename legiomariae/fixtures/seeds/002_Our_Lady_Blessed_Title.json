@@ -1,0 +1,585 @@
+[
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 1,
+    "fields": {
+      "name": "Santa Maria",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 2,
+    "fields": {
+      "name": "Santa Mãe de Deus",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 3,
+    "fields": {
+      "name": "Santa Virgem das Virgens",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 4,
+    "fields": {
+      "name": "Mãe de Cristo",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 5,
+    "fields": {
+      "name": "Mãe da Igreja",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 6,
+    "fields": {
+      "name": "Mãe de Misericórdia",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 7,
+    "fields": {
+      "name": "Mãe da Divina Graça",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 8,
+    "fields": {
+      "name": "Mãe da Esperança",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 9,
+    "fields": {
+      "name": "Mãe Puríssima",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 10,
+    "fields": {
+      "name": "Mãe Castíssima",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 11,
+    "fields": {
+      "name": "Mãe Sempre Virgem",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 12,
+    "fields": {
+      "name": "Mãe Imaculada",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 13,
+    "fields": {
+      "name": "Mãe Digna de Amor",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 14,
+    "fields": {
+      "name": "Mãe Admirável",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 15,
+    "fields": {
+      "name": "Mãe do Bom Conselho",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 16,
+    "fields": {
+      "name": "Mãe do Criador",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 17,
+    "fields": {
+      "name": "Mãe do Salvador",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 18,
+    "fields": {
+      "name": "Virgem Prudentíssima",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 19,
+    "fields": {
+      "name": "Virgem Venerável",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 20,
+    "fields": {
+      "name": "Virgem Louvável",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 21,
+    "fields": {
+      "name": "Virgem Poderosa",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 22,
+    "fields": {
+      "name": "Virgem Clemente",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 23,
+    "fields": {
+      "name": "Virgem Fiel",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 24,
+    "fields": {
+      "name": "Espelho de Perfeição",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 25,
+    "fields": {
+      "name": "Sede da Sabedoria",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 26,
+    "fields": {
+      "name": "Fonte de Nossa Alegria",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 27,
+    "fields": {
+      "name": "Vaso Espiritual",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 28,
+    "fields": {
+      "name": "Tabernáculo da Eterna Glória",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 29,
+    "fields": {
+      "name": "Moradia Consagrada a Deus",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 30,
+    "fields": {
+      "name": "Rosa Mística",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 31,
+    "fields": {
+      "name": "Torre de Davi",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 32,
+    "fields": {
+      "name": "Torre de marfim",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 33,
+    "fields": {
+      "name": "Casa de Ouro",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 34,
+    "fields": {
+      "name": "Arca da Aliança",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 35,
+    "fields": {
+      "name": "Porta do Céu",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 36,
+    "fields": {
+      "name": "Estrela da Manhã",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 37,
+    "fields": {
+      "name": "Saúde dos Enfermos",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 38,
+    "fields": {
+      "name": "Refúgio dos Pecadores",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 39,
+    "fields": {
+      "name": "Socorro dos Migrantes",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 40,
+    "fields": {
+      "name": "Consoladora dos Aflitos",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 41,
+    "fields": {
+      "name": "Auxílio dos Cristãos",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 42,
+    "fields": {
+      "name": "Rainha dos Anjos",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 43,
+    "fields": {
+      "name": "Rainha dos Patriarcas",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 44,
+    "fields": {
+      "name": "Rainha dos Profetas",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 45,
+    "fields": {
+      "name": "Rainha dos Apóstolos",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 46,
+    "fields": {
+      "name": "Rainha dos Mártires",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 47,
+    "fields": {
+      "name": "Rainha dos Confessores da Fé",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 48,
+    "fields": {
+      "name": "Rainha das Virgens",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 49,
+    "fields": {
+      "name": "Rainha de Todos os Santos",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 50,
+    "fields": {
+      "name": "Rainha Concebida sem Pecado Original",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 51,
+    "fields": {
+      "name": "Rainha Assunta ao Céu",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 52,
+    "fields": {
+      "name": "Rainha do Santo Rosário",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "organizations.ourladyblessedtitle",
+    "pk": 53,
+    "fields": {
+      "name": "Rainha da Paz",
+      "celebrate_date": null,
+      "description": "",
+      "created_at": "2022-09-23T13:20:50.005Z",
+      "updated_at": "2022-09-23T13:20:50.005Z"
+    }
+  }
+]
