@@ -88,7 +88,7 @@ $(document).ready(function($){
                 let newOptionInput = optionInput.cloneNode(true)
                 $(newOptionInput).attr('value', optionInfo['value'])
                 $(newOptionInput).removeAttr('selected')
-                newOptionInput.innerHTML = optionInfo['title']
+                newOptionInput.innerHTML = optionInfo['name']
                 return newOptionInput
             },
 

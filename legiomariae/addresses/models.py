@@ -64,12 +64,12 @@ class City(models.Model):
         return f'{self.name}'
 
     @classmethod
-    def serialize_fields_for_selected_by_state(cls, state_id):
+    def serialize_fields_for_select_by_state(cls, state_id):
         cities_serialized = []
         cities_state = cls.objects.filter(state=state_id)
 
         for city in cities_state:
-            cities_serialized.append({'title': city.name, 'value': city.id})
+            cities_serialized.append({'name': city.name, 'value': city.id})
 
         return cities_serialized
 

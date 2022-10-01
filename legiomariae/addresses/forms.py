@@ -10,7 +10,7 @@ class AddressForm(forms.ModelForm):
         pass
 
     def __init__(self, *args, **kwargs):
-        super(AddressForm, self).__init__(*args, *kwargs)
+        super(AddressForm, self).__init__(*args, **kwargs)
 
         # Force the insertion of the field fieldset_address_id to working in javascript
         if hasattr(self, 'fieldsets'):
@@ -18,7 +18,7 @@ class AddressForm(forms.ModelForm):
                 if not self.fieldsets[0][1]['fields']['fieldset_address_id']:
                     self.fieldsets[0][1]['fields'] += ['fieldset_address_id']
 
-        self.fields['fieldset_address_id'].initial = f'{self.Meta.model.__name__.lower()}__set'
+        self.fields['fieldset_address_id'].initial = f'{self.Meta.model.__name__.lower()}_set'
 
         if self.instance:
             try:
@@ -51,7 +51,7 @@ class AddressForm(forms.ModelForm):
                         self.fields['city'].widget.choices.queryset = City.objects.filter(state=state_id)
 
     class Media:
-        js = ('js/combobox_admin/combobox_address.js',)
+        js = ('js/combobox_address.js',)
 
 
 class StackedAddressForm(admin.StackedInline):
