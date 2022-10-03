@@ -43,12 +43,13 @@ class AddressForm(forms.ModelForm):
                     state_id = int(kwargs['data'][self.prefix+'-state'])
                     city_id = int(kwargs['data'][self.prefix+'-city'])
 
-                    if self.fields.get('state', None):
-                        self.fields['state'].initial = state_id
-                        self.fields['state'].widget.choices.queryset = State.objects.filter(country=country_id)
-                    if self.fields.get('city', None):
-                        self.fields['city'].initial = state_id
-                        self.fields['city'].widget.choices.queryset = City.objects.filter(state=state_id)
+                if self.fields.get('state', None):
+                    self.fields['state'].initial = state_id
+                    self.fields['state'].widget.choices.queryset = State.objects.filter(country=country_id)
+                if self.fields.get('city', None):
+                    self.fields['city'].initial = city_id
+                    self.fields['city'].widget.choices.queryset = City.objects.filter(state=state_id)
+
 
     class Media:
         js = ('js/combobox_address.js',)
