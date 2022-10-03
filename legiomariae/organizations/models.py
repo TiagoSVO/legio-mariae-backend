@@ -61,17 +61,33 @@ class Organization(models.Model):
         verbose_name_plural = "Organizações"
 
     def __str__(self):
-        return f'{self.name}'
+        return f'{self.full_name}'
+
+    @property
+    def full_name(self):
+        return f'{self.our_blessed_lady_title.name}'
+
+    @property
+    def linked_church(self):
+        address = self.addresses.first()
+        return f'{address.linked_church}' if address else '-'
+
 
 
 class OrganizationAddress(Address):
-    organization = models.ForeignKey('Organization', on_delete=models.CASCADE, verbose_name="Organização")
+    linked_church = models.CharField(max_length=255, verbose_name="Nome da Igreja Vinculada", null=True, blank=True)
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, verbose_name="Organização", related_name='addresses')
 
     class Meta:
         verbose_name = "Endereço da Organização"
         verbose_name_plural = "Endereços das Organização"
 
     def __str__(self):
-        return f'{self.our_blessed_lady_title.name} - {self.address_line}'
+        return f'{self.get_organization_name} - {self.address_line}'
+
+    @property
+    def get_organization_name(self):
+        return self.organization.our_blessed_lady_title.name if hasattr(self, 'organization') else ''
+
 
 

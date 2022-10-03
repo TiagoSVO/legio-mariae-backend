@@ -18,6 +18,10 @@ class OrganizationAddressInline(StackedAddressForm):
     extra = 0
 
 
+
+
+
+
 @admin.register(Organization)
 class OrganizationAdmin(admin.ModelAdmin):
     fieldsets = [
@@ -25,3 +29,5 @@ class OrganizationAdmin(admin.ModelAdmin):
     ]
 
     inlines = [OrganizationAddressInline]
+
+    list_display = ['full_name', 'linked_church']
