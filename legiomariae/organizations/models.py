@@ -99,4 +99,9 @@ class OrganizationPhone(Phone):
         verbose_name_plural = "Telefoness dos Clientes"
 
     def __str__(self):
-        return f'{self.organization.name} - {self.number_formatted}'
+        return f'{self.get_organization_name} - {self.number_formatted}'
+
+    @property
+    def get_organization_name(self):
+        return self.organization.our_blessed_lady_title.name if hasattr(self, 'organization') else ''
+
