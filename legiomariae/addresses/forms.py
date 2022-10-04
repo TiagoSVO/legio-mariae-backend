@@ -2,6 +2,7 @@ from django import forms
 from django.contrib import admin
 from .models import City, State
 
+
 class AddressForm(forms.ModelForm):
     # Field used by javascript script
     fieldset_address_id = forms.CharField(widget=forms.HiddenInput, required=False)
@@ -11,6 +12,7 @@ class AddressForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(AddressForm, self).__init__(*args, **kwargs)
+        print(dir(self.instance))
 
         # Force the insertion of the field fieldset_address_id to working in javascript
         if hasattr(self, 'fieldsets'):
@@ -22,22 +24,19 @@ class AddressForm(forms.ModelForm):
 
         if self.instance:
             try:
-                country_instance = self.instance.country
-                state_instance = self.instance.state
-                city_instance = self.instance.city
                 if self.fields.get('country', None):
-                    self.fields['country'].initial = country_instance.id
+                    self.fields['country'].initial = self.instance.country.id
                 if self.fields.get('state', None):
-                    self.fields['state'].initial = state_instance.id
-                    self.fields['state'].widget.choices.queryset = State.objects.filter(country=self.country_instance.id)
+                    self.fields['state'].initial = self.instance.state.id
+                    self.fields['state'].widget.choices.queryset = State.objects.filter(country=self.instance.country.id)
                 if self.fields.get('city', None):
-                    self.fields['city'].initial = city_instance.id
-                    self.fields['city'].widget.choices.queryset = City.objects.filter(state=self.state_instance.id)
+                    self.fields['city'].initial = self.instance.city.id
+                    self.fields['city'].widget.choices.queryset = City.objects.filter(state=self.instance.state.id)
             except:
+                # pass
                 country_id = 0
                 state_id = 0
                 city_id = 0
-
                 if kwargs.get('data', None):
                     country_id = int(kwargs['data'][self.prefix+'-country'])
                     state_id = int(kwargs['data'][self.prefix+'-state'])
@@ -51,7 +50,10 @@ class AddressForm(forms.ModelForm):
                     self.fields['city'].widget.choices.queryset = City.objects.filter(state=state_id)
 
     class Media:
-        js = ('js/combobox_address.js',)
+        # Alter these paths depending on where you put your media
+        js = (
+            'js/combobox_address.js',
+        )
 
 
 class StackedAddressForm(admin.StackedInline):

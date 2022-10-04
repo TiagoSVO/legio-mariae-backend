@@ -29,6 +29,6 @@ class OrganizationAdmin(admin.ModelAdmin):
         (None, {'fields': ['registered_at', 'active', 'deleted', 'organization_type', 'our_blessed_lady_title', 'organization_parent']}),
     ]
 
-    inlines = [OrganizationAddressInline, OrganizationPhoneInline]
+    inlines = [OrganizationPhoneInline, OrganizationAddressInline]
 
     list_display = ['full_name', 'linked_church']

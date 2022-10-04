@@ -5,7 +5,7 @@ $(document).ready(function($){
             _options: {
                 baseUrlGetStates: '/addresses/states_country_json/',
                 baseUrlGetCities: '/addresses/cities_state_json/',
-                baseName: $('input[value*=set]')[0].value,
+                baseName: 'addresses',
             },
 
             _setDefaultOptions: function() {
