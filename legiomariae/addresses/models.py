@@ -17,6 +17,10 @@ class Country(models.Model):
     def __str__(self):
         return f'{self.name}'
 
+    @property
+    def phone_code_formatted(self):
+        return f'+{self.phone_code} | {self.name}'
+
 
 class State(models.Model):
     name = models.CharField(max_length=100, verbose_name="Nome do Estado", null=False, blank=False)

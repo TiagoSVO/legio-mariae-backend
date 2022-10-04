@@ -50,7 +50,6 @@ class AddressForm(forms.ModelForm):
                     self.fields['city'].initial = city_id
                     self.fields['city'].widget.choices.queryset = City.objects.filter(state=state_id)
 
-
     class Media:
         js = ('js/combobox_address.js',)
 

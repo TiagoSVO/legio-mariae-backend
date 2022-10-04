@@ -1,5 +1,6 @@
 from django.db import models
 from addresses.models import Address
+from phones.models import Phone
 
 
 class OrganizationType(models.Model):
@@ -73,10 +74,10 @@ class Organization(models.Model):
         return f'{address.linked_church}' if address else '-'
 
 
-
 class OrganizationAddress(Address):
     linked_church = models.CharField(max_length=255, verbose_name="Nome da Igreja Vinculada", null=True, blank=True)
-    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, verbose_name="Organização", related_name='addresses')
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, verbose_name="Organização",
+                                     related_name='addresses')
 
     class Meta:
         verbose_name = "Endereço da Organização"
@@ -90,4 +91,12 @@ class OrganizationAddress(Address):
         return self.organization.our_blessed_lady_title.name if hasattr(self, 'organization') else ''
 
 
+class OrganizationPhone(Phone):
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
 
+    class Meta:
+        verbose_name = "Telefone do Cliente"
+        verbose_name_plural = "Telefoness dos Clientes"
+
+    def __str__(self):
+        return f'{self.organization.name} - {self.number_formatted}'
