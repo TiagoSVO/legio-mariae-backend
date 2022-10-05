@@ -5,7 +5,7 @@ $(document).ready(function($){
             _options: {
                 baseUrlGetStates: '/addresses/states_country_json/',
                 baseUrlGetCities: '/addresses/cities_state_json/',
-                baseName: 'addresses',
+                baseName: $('input[value*=_combobox]')[0].value.split('_combobox')[0],
             },
 
             _setDefaultOptions: function() {

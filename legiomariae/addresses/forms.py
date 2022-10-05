@@ -12,7 +12,6 @@ class AddressForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(AddressForm, self).__init__(*args, **kwargs)
-        print(dir(self.instance))
 
         # Force the insertion of the field fieldset_address_id to working in javascript
         if hasattr(self, 'fieldsets'):
@@ -20,7 +19,7 @@ class AddressForm(forms.ModelForm):
                 if not self.fieldsets[0][1]['fields']['fieldset_address_id']:
                     self.fieldsets[0][1]['fields'] += ['fieldset_address_id']
 
-        self.fields['fieldset_address_id'].initial = f'{self.Meta.model.__name__.lower()}_set'
+        self.fields['fieldset_address_id'].initial = f'{self.prefix.split("-")[0]}_combobox'
 
         if self.instance:
             try:
