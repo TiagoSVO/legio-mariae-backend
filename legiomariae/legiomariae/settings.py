@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     'addresses',
     'organizations',
+    'members',
 ]
 
 MIDDLEWARE = [
