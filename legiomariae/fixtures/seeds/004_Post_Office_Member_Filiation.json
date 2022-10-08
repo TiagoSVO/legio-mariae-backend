@@ -1,0 +1,57 @@
+[
+  {
+    "model": "members.memberfiliationtype",
+    "pk": 1,
+    "fields": {
+      "name": "DIRETOR ESPIRITUAL",
+      "code": "DES",
+      "description": "",
+      "created_at": "2022-10-08T13:20:50.005Z",
+      "updated_at": "2022-10-08T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "members.memberfiliationtype",
+    "pk": 2,
+    "fields": {
+      "name": "PRESIDENTE",
+      "code": "PRS",
+      "description": "",
+      "created_at": "2022-10-08T13:20:50.005Z",
+      "updated_at": "2022-10-08T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "members.memberfiliationtype",
+    "pk": 3,
+    "fields": {
+      "name": "VICE-PRESIDENTE",
+      "code": "VPR",
+      "description": "",
+      "created_at": "2022-10-08T13:20:50.005Z",
+      "updated_at": "2022-10-08T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "members.memberfiliationtype",
+    "pk": 4,
+    "fields": {
+      "name": "SECRETÁRIO",
+      "code": "SEC",
+      "description": "",
+      "created_at": "2022-10-08T13:20:50.005Z",
+      "updated_at": "2022-10-08T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "members.memberfiliationtype",
+    "pk": 5,
+    "fields": {
+      "name": "TESOUREIRO",
+      "code": "TES",
+      "description": "",
+      "created_at": "2022-10-08T13:20:50.005Z",
+      "updated_at": "2022-10-08T13:20:50.005Z"
+    }
+  }
+]

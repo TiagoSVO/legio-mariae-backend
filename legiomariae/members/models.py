@@ -43,7 +43,7 @@ class MemberPhone(Phone):
 
     class Meta:
         verbose_name = "Telefone do Membro"
-        verbose_name_plural = "Telefoness dos Membros"
+        verbose_name_plural = "Telefones dos Membros"
 
     def __str__(self):
         return f'{self.get_name} - {self.number_formatted}'

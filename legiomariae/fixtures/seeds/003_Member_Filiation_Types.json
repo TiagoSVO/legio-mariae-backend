@@ -1,0 +1,46 @@
+[
+  {
+    "model": "members.memberfiliationtype",
+    "pk": 1,
+    "fields": {
+      "name": "ATIVO",
+      "code": "ATV",
+      "description": "",
+      "created_at": "2022-10-08T13:20:50.005Z",
+      "updated_at": "2022-10-08T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "members.memberfiliationtype",
+    "pk": 2,
+    "fields": {
+      "name": "PRETORIANO",
+      "code": "PRT",
+      "description": "",
+      "created_at": "2022-10-08T13:20:50.005Z",
+      "updated_at": "2022-10-08T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "members.memberfiliationtype",
+    "pk": 3,
+    "fields": {
+      "name": "AUXILIAR",
+      "code": "AUX",
+      "description": "",
+      "created_at": "2022-10-08T13:20:50.005Z",
+      "updated_at": "2022-10-08T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "members.memberfiliationtype",
+    "pk": 4,
+    "fields": {
+      "name": "ADJUTOR",
+      "code": "ADJ",
+      "description": "",
+      "created_at": "2022-10-08T13:20:50.005Z",
+      "updated_at": "2022-10-08T13:20:50.005Z"
+    }
+  }
+]
