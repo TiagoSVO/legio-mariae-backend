@@ -35,3 +35,19 @@ class MemberAddress(Address):
     @property
     def get_member_name(self):
         return self.member.complete_name if hasattr(self, 'member') else ''
+
+
+class MemberPhone(Phone):
+    member = models.ForeignKey(Member, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = "Telefone do Membro"
+        verbose_name_plural = "Telefoness dos Membros"
+
+    def __str__(self):
+        return f'{self.get_name_name} - {self.number_formatted}'
+
+    @property
+    def get_name_name(self):
+        return self.member.complete_name if hasattr(self, 'member') else ''
+

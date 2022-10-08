@@ -1,6 +1,11 @@
 from django.contrib import admin
-from .models import Member, MemberAddress
+from .models import Member, MemberAddress, MemberPhone
 from addresses.forms import StackedAddressForm
+
+
+class MemberPhoneInline(admin.StackedInline):
+    model = MemberPhone
+    extra = 0
 
 
 class MemberAddressInline(StackedAddressForm):
@@ -15,6 +20,6 @@ class MemberAdmin(admin.ModelAdmin):
                            'deleted']}),
     ]
 
-    inlines = [MemberAddressInline,]
+    inlines = [MemberAddressInline, MemberPhoneInline]
 
     list_display = ['complete_name', 'nickname', 'birthday', 'deleted']

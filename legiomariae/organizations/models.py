@@ -95,8 +95,8 @@ class OrganizationPhone(Phone):
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name = "Telefone do Cliente"
-        verbose_name_plural = "Telefoness dos Clientes"
+        verbose_name = "Telefone da Organização"
+        verbose_name_plural = "Telefoness ddas Organizações"
 
     def __str__(self):
         return f'{self.get_organization_name} - {self.number_formatted}'
