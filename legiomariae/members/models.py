@@ -95,7 +95,7 @@ class MemberFiliation(models.Model):
 
     @property
     def get_organization_name(self):
-        return self.organization.name if hasattr(self, 'organization') else ''
+        return self.organization.our_blessed_lady_title.name if hasattr(self, 'organization') else ''
 
 
 class PostOffice(models.Model):
@@ -132,7 +132,7 @@ class PostOfficeMemberFiliation(models.Model):
         ]
 
     def __str__(self):
-        return f'{self.code} - {self.name}'
+        return f'{self.post_office.code} | {self.post_office.name} - {self.member_filiation.member.complete_name}'
 
 
 
