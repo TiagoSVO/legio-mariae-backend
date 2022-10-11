@@ -1,11 +1,13 @@
 from django.db import models
 
+from members.models import Member
 from organizations.models import Organization
 
 
 class Meeting(models.Model):
     date = models.DateField(verbose_name='Data da Reunião')
     start_at = models.TimeField(verbose_name='Início da Reunião')
+    reposition = models.BooleanField(verbose_name='Reposição', default=False)
     place_address = models.CharField(max_length=255, verbose_name='Local da Reunião', blank=True, null=True)
     initial_prayer = models.BooleanField(verbose_name='Orações Iniciais', default=True)
     rosary_prayer = models.BooleanField(verbose_name='Oração do Terço', default=True)
@@ -36,3 +38,69 @@ class Meeting(models.Model):
     @property
     def organization_name(self):
         return f'{self.organization.our_blessed_lady_title.name}'
+
+
+class MeetingOrganizationJoin(models.Model):
+    meeting = models.ForeignKey(Meeting, verbose_name='Reunião')
+    organization = models.ForeignKey(Organization, verbose_name='Organização Anfitriã')
+    organization_guest = models.ForeignKey(Organization, verbose_name='Organização convidada')
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Reunião em Conjunto"
+        verbose_name_plural = "Reuniões em Conjunto"
+
+    def __str__(self):
+        host_organization = self.organization.our_blessed_lady.name
+        guest_organization = self.organization_guest.our_blessed_lady.name
+        return f'Reunião do dia {self.meeting.date} | Anfitriã: {host_organization} | Convidada: {guest_organization}'
+
+
+class WelcomeGuest(models.Model):
+    guest_name = models.CharField(max_length=255, verbose_name='Nome do Convidado')
+    meeting = models.ForeignKey(Meeting, on_delete=models.CASCADE, verbose_name='Reunião')
+    welcome_member = models.ForeignKey(Member, on_delete=models.SET_NULL, verbose_name='Membro Acolhedor')
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Reunião em Conjunto"
+        verbose_name_plural = "Reuniões em Conjunto"
+
+    def __str__(self):
+        return f'Boas vindas de {self.member.complete_name} a {self.guest_name}'
+
+
+class MinuteMeeting(models.Model):
+    minute_number = models.CharField(max_length=7, verbose_name='Número da Ata', null=True, blank=True)
+    description = models.TextField(verbose_name='Descrição completa da Ata')
+    meeting = models.ForeignKey(Meeting, verbose_name='Reunião')
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Ata da Reunião"
+        verbose_name_plural = "Atas das Reuniões"
+
+    def __str__(self):
+        return f'Ata número: {self.minute_number}'
+
+
+class MinuteMeetingReaded(models.Model):
+    observações = models.TextField(verbose_name='Observações', null=True, blank=True)
+    meeting = models.ForeignKey(Meeting, verbose_name='Lida na Reunião')
+    minute = models.ForeignKey(Meeting, verbose_name='Lida na Reunião')
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Ata Lida de Reunião Anterior"
+        verbose_name_plural = "Atas Lida de Reuniões Anteriores"
+
+    def __str__(self):
+        return f'Ata lida, número: {self.minute.minute_number}'
