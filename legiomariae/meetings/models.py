@@ -41,9 +41,8 @@ class Meeting(models.Model):
 
 
 class MeetingOrganizationJoin(models.Model):
-    meeting = models.ForeignKey(Meeting, verbose_name='Reunião')
-    organization = models.ForeignKey(Organization, verbose_name='Organização Anfitriã')
-    organization_guest = models.ForeignKey(Organization, verbose_name='Organização convidada')
+    meeting = models.ForeignKey(Meeting, verbose_name='Reunião', on_delete=models.CASCADE)
+    organization_guest = models.ForeignKey(Organization, verbose_name='Organização convidada', on_delete=models.CASCADE)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -61,7 +60,7 @@ class MeetingOrganizationJoin(models.Model):
 class WelcomeGuest(models.Model):
     guest_name = models.CharField(max_length=255, verbose_name='Nome do Convidado')
     meeting = models.ForeignKey(Meeting, on_delete=models.CASCADE, verbose_name='Reunião')
-    welcome_member = models.ForeignKey(Member, on_delete=models.SET_NULL, verbose_name='Membro Acolhedor')
+    welcome_member = models.ForeignKey(Member, on_delete=models.SET_NULL, verbose_name='Membro Acolhedor', null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -77,7 +76,7 @@ class WelcomeGuest(models.Model):
 class MinuteMeeting(models.Model):
     minute_number = models.CharField(max_length=7, verbose_name='Número da Ata', null=True, blank=True)
     description = models.TextField(verbose_name='Descrição completa da Ata')
-    meeting = models.ForeignKey(Meeting, verbose_name='Reunião')
+    meeting = models.ForeignKey(Meeting, verbose_name='Reunião', on_delete=models.CASCADE)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -91,9 +90,9 @@ class MinuteMeeting(models.Model):
 
 
 class MinuteMeetingReaded(models.Model):
-    observações = models.TextField(verbose_name='Observações', null=True, blank=True)
-    meeting = models.ForeignKey(Meeting, verbose_name='Lida na Reunião')
-    minute = models.ForeignKey(Meeting, verbose_name='Lida na Reunião')
+    observations = models.TextField(verbose_name='Observações', null=True, blank=True)
+    meeting = models.ForeignKey(Meeting, verbose_name='Reunião Lida', on_delete=models.CASCADE, related_name='in_meeting_readed')
+    minute = models.ForeignKey(Meeting, verbose_name='Ata Lida', on_delete=models.CASCADE, related_name='minute_readed')
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
