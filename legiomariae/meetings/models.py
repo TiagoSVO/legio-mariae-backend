@@ -66,8 +66,8 @@ class WelcomeGuest(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name = "Reunião em Conjunto"
-        verbose_name_plural = "Reuniões em Conjunto"
+        verbose_name = "Convidado"
+        verbose_name_plural = "Convidados"
 
     def __str__(self):
         return f'Boas vindas de {self.member.complete_name} a {self.guest_name}'
@@ -92,7 +92,7 @@ class MinuteMeeting(models.Model):
 class MinuteMeetingReaded(models.Model):
     observations = models.TextField(verbose_name='Observações', null=True, blank=True)
     meeting = models.ForeignKey(Meeting, verbose_name='Reunião Lida', on_delete=models.CASCADE, related_name='in_meeting_readed')
-    minute = models.ForeignKey(Meeting, verbose_name='Ata Lida', on_delete=models.CASCADE, related_name='minute_readed')
+    minute = models.ForeignKey(MinuteMeeting, verbose_name='Ata Lida', on_delete=models.CASCADE, related_name='minute_readed')
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
