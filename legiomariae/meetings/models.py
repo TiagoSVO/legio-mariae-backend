@@ -76,7 +76,7 @@ class WelcomeGuest(models.Model):
 class MinuteMeeting(models.Model):
     minute_number = models.CharField(max_length=7, verbose_name='Número da Ata', null=True, blank=True)
     description = models.TextField(verbose_name='Descrição completa da Ata', default='### NÃO PREENCHIDA ###')
-    meeting = models.ForeignKey(Meeting, verbose_name='Reunião', on_delete=models.CASCADE)
+    meeting = models.OneToOneField(Meeting, verbose_name='Reunião', on_delete=models.CASCADE)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
