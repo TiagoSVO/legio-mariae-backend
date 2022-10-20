@@ -43,11 +43,13 @@ INSTALLED_APPS = [
     'django_extensions',
     'rest_framework',
     'nested_admin',
+    'djmoney',
 
     'addresses',
     'organizations',
     'members',
-    'meetings'
+    'meetings',
+    'treasuries'
 ]
 
 MIDDLEWARE = [
