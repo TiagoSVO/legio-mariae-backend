@@ -17,7 +17,7 @@ class Meeting(models.Model):
     allocutio = models.TextField(verbose_name='Allocutio', blank=True, null=True)
     announcements = models.TextField(verbose_name='Avisos e Outros Assuntos', blank=True, null=True)
     final_observations = models.TextField(verbose_name='Observações Finais', blank=True, null=True)
-    final_prayer = models.BooleanField(verbose_name='Oração da Catena', default=True)
+    final_prayer = models.BooleanField(verbose_name='Orações Finais', default=True)
     end_at = models.TimeField(verbose_name='Final da Reunião')
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE, verbose_name='Organização')
 
@@ -75,7 +75,7 @@ class WelcomeGuest(models.Model):
 
 class MinuteMeeting(models.Model):
     minute_number = models.CharField(max_length=7, verbose_name='Número da Ata', null=True, blank=True)
-    description = models.TextField(verbose_name='Descrição completa da Ata')
+    description = models.TextField(verbose_name='Descrição completa da Ata', default='### NÃO PREENCHIDA ###')
     meeting = models.ForeignKey(Meeting, verbose_name='Reunião', on_delete=models.CASCADE)
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -91,7 +91,7 @@ class MinuteMeeting(models.Model):
 
 class MinuteMeetingReaded(models.Model):
     observations = models.TextField(verbose_name='Observações', null=True, blank=True)
-    meeting = models.ForeignKey(Meeting, verbose_name='Reunião Lida', on_delete=models.CASCADE, related_name='in_meeting_readed')
+    meeting = models.ForeignKey(Meeting, verbose_name='Reunião em que foi lida', on_delete=models.CASCADE, related_name='in_meeting_readed')
     minute = models.ForeignKey(MinuteMeeting, verbose_name='Ata Lida', on_delete=models.CASCADE, related_name='minute_readed')
 
     created_at = models.DateTimeField(auto_now_add=True)

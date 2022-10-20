@@ -30,3 +30,8 @@ class MinuteMeetingReadedInline(NestedStackedInline):
 class MeetingAdmin(NestedModelAdmin):
     inlines = [MeetingOrganizationJoinInline, WelcomeGuestInline,
                MinuteMeetingInline, MinuteMeetingReadedInline]
+
+
+@admin.register(MinuteMeeting)
+class MinuteMeetingAdmin(admin.ModelAdmin):
+    pass
