@@ -2,6 +2,8 @@ from django.contrib import admin
 from .models import Meeting, MeetingOrganizationJoin, WelcomeGuest, MinuteMeeting, MinuteMeetingReaded
 from .forms import WelcomeGuestForm
 from nested_admin import NestedModelAdmin, NestedStackedInline
+from treasuries.models import TreasuryReport, Expense
+from manuals.models import ManualReading, ManualReadedBy
 
 
 class MeetingOrganizationJoinInline(NestedStackedInline):
@@ -26,10 +28,37 @@ class MinuteMeetingReadedInline(NestedStackedInline):
     extra = 1
 
 
+class ExpenseInline(NestedStackedInline):
+    model = Expense
+    extra = 1
+
+
+class TreasuryReportInline(NestedStackedInline):
+    model = TreasuryReport
+    extra = 1
+    max_num = 1
+
+    inlines = [ExpenseInline]
+
+
+class ManualReadedByInline(NestedStackedInline):
+    model = ManualReadedBy
+    extra = 1
+
+
+class ManualReadingInline(NestedStackedInline):
+    model = ManualReading
+    extra = 1
+    max_num = 1
+
+    inlines = [ManualReadedByInline]
+
+
 @admin.register(Meeting)
 class MeetingAdmin(NestedModelAdmin):
     inlines = [MeetingOrganizationJoinInline, WelcomeGuestInline,
-               MinuteMeetingInline, MinuteMeetingReadedInline]
+               MinuteMeetingInline, MinuteMeetingReadedInline,
+               TreasuryReportInline, ManualReadingInline]
 
 
 @admin.register(MinuteMeeting)

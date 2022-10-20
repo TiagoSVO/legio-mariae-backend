@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'organizations',
     'members',
     'meetings',
-    'treasuries'
+    'treasuries',
+    'manuals'
 ]
 
 MIDDLEWARE = [
