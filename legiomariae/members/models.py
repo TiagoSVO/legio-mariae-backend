@@ -133,6 +133,3 @@ class PostOfficeMemberFiliation(models.Model):
 
     def __str__(self):
         return f'{self.post_office.code} | {self.post_office.name} - {self.member_filiation.member.complete_name}'
-
-
-
