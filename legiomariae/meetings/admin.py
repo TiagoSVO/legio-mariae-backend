@@ -4,6 +4,7 @@ from .forms import WelcomeGuestForm
 from nested_admin import NestedModelAdmin, NestedStackedInline
 from treasuries.models import TreasuryReport, Expense
 from manuals.models import ManualReading, ManualReadedBy
+from attendences.models import AttendenceSheet, AttendenceSheetMember
 
 
 class MeetingOrganizationJoinInline(NestedStackedInline):
@@ -54,11 +55,23 @@ class ManualReadingInline(NestedStackedInline):
     inlines = [ManualReadedByInline]
 
 
+class AttendenceSheetMemberAdmin(NestedStackedInline):
+    model = AttendenceSheetMember
+    extra = 1
+
+
+class AttendenceSheetAdmin(NestedStackedInline):
+    model = AttendenceSheet
+
+    inlines = [AttendenceSheetMemberAdmin]
+
+
 @admin.register(Meeting)
 class MeetingAdmin(NestedModelAdmin):
     inlines = [MeetingOrganizationJoinInline, WelcomeGuestInline,
                MinuteMeetingInline, MinuteMeetingReadedInline,
-               TreasuryReportInline, ManualReadingInline]
+               TreasuryReportInline, ManualReadingInline,
+               AttendenceSheetAdmin]
 
 
 @admin.register(MinuteMeeting)
