@@ -29,7 +29,7 @@ class Meeting(models.Model):
         verbose_name_plural = "Reuniões"
 
     def __str__(self):
-        return f'Reunião do dia {self.date} | {self.organization_type_name} {self.organization_name}'
+        return self.get_formatted_label
 
     @property
     def organization_type_name(self):
@@ -38,6 +38,10 @@ class Meeting(models.Model):
     @property
     def organization_name(self):
         return f'{self.organization.our_blessed_lady_title.name}'
+
+    @property
+    def get_formatted_label(self):
+        return f'Reunião do dia {self.date} | {self.organization_type_name} {self.organization_name}'
 
 
 class MeetingOrganizationJoin(models.Model):
