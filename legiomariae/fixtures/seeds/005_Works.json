@@ -1,0 +1,143 @@
+[
+  {
+    "model": "works.work",
+    "pk": 1,
+    "fields": {
+      "name": "Visitar as Famílias",
+      "description": "",
+      "created_at": "2022-10-23T13:20:50.005Z",
+      "updated_at": "2022-10-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "works.work",
+    "pk": 2,
+    "fields": {
+      "name": "Orientar Celebrações Paralitúrgicas",
+      "description": "",
+      "created_at": "2022-10-23T13:20:50.005Z",
+      "updated_at": "2022-10-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "works.work",
+    "pk": 3,
+    "fields": {
+      "name": "Orientar Aulas de Formação Religiosa",
+      "description": "",
+      "created_at": "2022-10-23T13:20:50.005Z",
+      "updated_at": "2022-10-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "works.work",
+    "pk": 4,
+    "fields": {
+      "name": "Visitar e Cuidar dos Deficientes",
+      "description": "Visitar e Cuidar dos Deficientes e perparar visita do sacerdote se necessário",
+      "created_at": "2022-10-23T13:20:50.005Z",
+      "updated_at": "2022-10-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "works.work",
+    "pk": 5,
+    "fields": {
+      "name": "Visitar e Cuidar dos Enfermos",
+      "description": "Visitar e Cuidar dos Deficientes e perparar visita do sacerdote se necessário",
+      "created_at": "2022-10-23T13:20:50.005Z",
+      "updated_at": "2022-10-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "works.work",
+    "pk": 6,
+    "fields": {
+      "name": "Visitar e Cuidar dos Idosos",
+      "description": "Visitar e Cuidar dos Idosos e perparar visita do sacerdote se necessário",
+      "created_at": "2022-10-23T13:20:50.005Z",
+      "updated_at": "2022-10-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "works.work",
+    "pk": 7,
+    "fields": {
+      "name": "Rezar o Terço/Rosário",
+      "description": "",
+      "created_at": "2022-10-23T13:20:50.005Z",
+      "updated_at": "2022-10-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "works.work",
+    "pk": 8,
+    "fields": {
+      "name": "Visita à Membro Auxiliar",
+      "description": "",
+      "created_at": "2022-10-23T13:20:50.005Z",
+      "updated_at": "2022-10-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "works.work",
+    "pk": 8,
+    "fields": {
+      "name": "Recrutamento de Membro Auxiliar",
+      "description": "",
+      "created_at": "2022-10-23T13:20:50.005Z",
+      "updated_at": "2022-10-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "works.work",
+    "pk": 9,
+    "fields": {
+      "name": "Recrutamento de Membro Ativo",
+      "description": "",
+      "created_at": "2022-10-23T13:20:50.005Z",
+      "updated_at": "2022-10-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "works.work",
+    "pk": 10,
+    "fields": {
+      "name": "Entronização do Sagrado Coração",
+      "description": "",
+      "created_at": "2022-10-23T13:20:50.005Z",
+      "updated_at": "2022-10-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "works.work",
+    "pk": 11,
+    "fields": {
+      "name": "Recenseamento Paroquial",
+      "description": "",
+      "created_at": "2022-10-23T13:20:50.005Z",
+      "updated_at": "2022-10-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "works.work",
+    "pk": 12,
+    "fields": {
+      "name": "Visita à Irmãos de Rua",
+      "description": "",
+      "created_at": "2022-10-23T13:20:50.005Z",
+      "updated_at": "2022-10-23T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "works.work",
+    "pk": 13,
+    "fields": {
+      "name": "Estudo da Fé",
+      "description": "",
+      "created_at": "2022-10-23T13:20:50.005Z",
+      "updated_at": "2022-10-23T13:20:50.005Z"
+    }
+  }
+
+]
