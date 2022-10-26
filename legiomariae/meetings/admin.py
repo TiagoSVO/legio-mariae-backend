@@ -1,10 +1,13 @@
 from django.contrib import admin
+from nested_admin import NestedModelAdmin, NestedStackedInline
+
 from .models import Meeting, MeetingOrganizationJoin, WelcomeGuest, MinuteMeeting, MinuteMeetingReaded
 from .forms import WelcomeGuestForm
-from nested_admin import NestedModelAdmin, NestedStackedInline
+
 from treasuries.models import TreasuryReport, Expense
 from manuals.models import ManualReading, ManualReadedBy
 from attendences.models import AttendenceSheet, AttendenceSheetMember
+from works.models import WorkSheet, WorkSheetItem, WorkSheetItemMemberFiliation, WorkReport
 
 
 class MeetingOrganizationJoinInline(NestedStackedInline):
@@ -55,23 +58,47 @@ class ManualReadingInline(NestedStackedInline):
     inlines = [ManualReadedByInline]
 
 
-class AttendenceSheetMemberAdmin(NestedStackedInline):
+class AttendenceSheetMemberInline(NestedStackedInline):
     model = AttendenceSheetMember
     extra = 1
 
 
-class AttendenceSheetAdmin(NestedStackedInline):
+class AttendenceSheetInline(NestedStackedInline):
     model = AttendenceSheet
 
-    inlines = [AttendenceSheetMemberAdmin]
+    inlines = [AttendenceSheetMemberInline]
 
+
+class WorkSheetItemMemberFiliationInline(NestedStackedInline):
+    model = WorkSheetItemMemberFiliation
+    extra = 2
+
+
+class WorkSheetItemInline(NestedStackedInline):
+    model = WorkSheetItem
+    extra = 1
+
+    inlines = [WorkSheetItemMemberFiliationInline]
+
+
+class WorkSheetInline(NestedStackedInline):
+    model = WorkSheet
+    extra = 1
+
+    inlines = [WorkSheetItemInline]
+
+
+class WorkReportInline(NestedStackedInline):
+    model = WorkReport
+    extra = 1
 
 @admin.register(Meeting)
 class MeetingAdmin(NestedModelAdmin):
     inlines = [MeetingOrganizationJoinInline, WelcomeGuestInline,
                MinuteMeetingInline, MinuteMeetingReadedInline,
                TreasuryReportInline, ManualReadingInline,
-               AttendenceSheetAdmin]
+               AttendenceSheetInline, WorkSheetInline,
+               WorkReportInline]
 
 
 @admin.register(MinuteMeeting)

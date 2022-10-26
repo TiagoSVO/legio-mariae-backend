@@ -54,7 +54,7 @@ class WorkReportStatus(models.Model):
 class WorkSheet(models.Model):
     start_date = models.DateField(verbose_name='Data de Início')
     end_date = models.DateField(verbose_name='Data de Fim')
-    meeting = models.OneToOneField(Meeting, on_delete=models.CASCADE, verbose_name='Reunião')
+    meeting = models.OneToOneField(Meeting, on_delete=models.SET_NULL, verbose_name='Reunião', blank=True, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -116,6 +116,8 @@ class WorkReport(models.Model):
     report_description = models.TextField(verbose_name='Relatório do Trabalho')
     work_sheet_item = models.OneToOneField(WorkSheetItem, on_delete=models.CASCADE,
                                            verbose_name='Item da Folha de Trabalhos')
+    meeting = models.OneToOneField(Meeting, verbose_name='Reunião Reportada', on_delete=models.SET_NULL,
+                                   null=True, blank=True)
     work_report_status = models.ForeignKey(WorkReportStatus, on_delete=models.SET_NULL, blank=True, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
