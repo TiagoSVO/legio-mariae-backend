@@ -12,7 +12,7 @@
   },
   {
     "model": "works.participationtype",
-    "pk": 1,
+    "pk": 2,
     "fields": {
       "name": "Participação Especial",
       "code": "PES",
