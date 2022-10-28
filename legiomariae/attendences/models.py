@@ -33,7 +33,7 @@ class AttendenceSheetMemberStatus(models.Model):
         verbose_name_plural = "Status dos Membros nas Chamadas"
 
     def __str__(self):
-        return f'{self.member}'
+        return f'{self.name}'
 
 
 class AttendenceSheetMember(models.Model):
