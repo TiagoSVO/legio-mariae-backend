@@ -1,0 +1,35 @@
+[
+  {
+    "model": "attendences.attendencesheetmemberstatus",
+    "pk": 1,
+    "fields": {
+      "name": "COMPARECEU",
+      "code": "C",
+      "description": "",
+      "created_at": "2022-10-28T13:20:50.005Z",
+      "updated_at": "2022-10-28T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "attendences.attendencesheetmemberstatus",
+    "pk": 2,
+    "fields": {
+      "name": "FALTOU",
+      "code": "F",
+      "description": "",
+      "created_at": "2022-10-28T13:20:50.005Z",
+      "updated_at": "2022-10-28T13:20:50.005Z"
+    }
+  },
+  {
+    "model": "attendences.attendencesheetmemberstatus",
+    "pk": 3,
+    "fields": {
+      "name": "JUSTIFICOU",
+      "code": "J",
+      "description": "",
+      "created_at": "2022-10-28T13:20:50.005Z",
+      "updated_at": "2022-10-28T13:20:50.005Z"
+    }
+  }
+]
