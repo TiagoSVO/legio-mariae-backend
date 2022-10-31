@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from addresses import urls as addresses_url
+from meetings import urls as meetings_url
 
 
 from django.conf import settings
@@ -25,4 +26,5 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('addresses/', include(addresses_url)),
+    path('meetings/', include(meetings_url)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

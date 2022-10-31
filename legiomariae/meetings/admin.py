@@ -103,4 +103,4 @@ class MeetingAdmin(NestedModelAdmin):
 
 @admin.register(MinuteMeeting)
 class MinuteMeetingAdmin(admin.ModelAdmin):
-    pass
+    change_form_template = 'meetings/minute_meeting/custom_change_form.html'
