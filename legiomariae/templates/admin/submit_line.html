@@ -1,0 +1,13 @@
+{% extends "admin/submit_line.html" %}
+{% load i18n admin_urls %}
+
+{% block submit-row %}
+
+<a href="{% url opts|admin_urlname:'changelist' %}" class="closelink">{% translate 'Close' %}</a>
+
+{{ block.super }}
+
+{% block custom_buttons %}
+{% endblock %}
+
+{% endblock %}
