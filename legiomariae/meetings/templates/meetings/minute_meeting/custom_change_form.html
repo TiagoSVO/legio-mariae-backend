@@ -1,0 +1,14 @@
+{% extends "admin/change_form.html" %}
+{% load static %}
+{% block content %}
+    <button class="button gm_button" type="button">Generate Minute</button>
+    {{block.super}}
+{% endblock %}
+{% block admin_change_form_document_ready %}
+{{ block.super }}
+<script id="django-admin-generate-minute"
+            src="{% static 'js/minute_generate.js' %}"
+            async>
+</script>
+
+{% endblock %}
