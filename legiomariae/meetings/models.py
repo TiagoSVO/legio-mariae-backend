@@ -121,7 +121,9 @@ class MinuteMeeting(models.Model):
     @property
     def built_text_minute_introduction(self):
         meeting = self.meeting
-        final_text = f'{meeting.date_in_full}, às {meeting.start_at_in_full}, '
+        address = meeting.organization.addresses.all()[0]
+        final_text = f'{meeting.date_in_full}, às {meeting.start_at_in_full}, {meeting.place_address}, ' \
+                     f'{address.state.name} - {address.state.acronym}'
         return final_text
 
     def create_minute_meeting(self, meeting_id = None):
@@ -144,8 +146,7 @@ class MinuteMeeting(models.Model):
             raise ValueError('Data to build minute is missing!')
 
         minute_text = f'{self.build_text_minute_title}\n' \
-                      f'{self.built_text_minute_introduction}' \
-                      f'nas dependências da Paróquia São Pio, situada no Sudoeste- DF ' \
+                      f'{self.built_text_minute_introduction} ' \
                       f'iniciou-se mais uma reunião semanal do praesidium Rosa Mística, ' \
                       f'sob a proteção de Nossa Senhora, com as orações iniciais da tessera ' \
                       f'seguidas do santo terço. ' \
