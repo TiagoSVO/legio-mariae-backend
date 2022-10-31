@@ -26,7 +26,7 @@ let generateMinute = {
         })
         .then(data => {
             console.log(data)
-            targetTextareaMinuteGenerated.innerHTML = data['meeting_text']
+            targetTextareaMinuteGenerated.value = data['meeting_text']
         })
         .catch(error => console.log(error))
     }

@@ -1,5 +1,6 @@
 from django.db import models
 
+from utils.utils import months_names
 from members.models import Member
 from organizations.models import Organization
 
@@ -46,7 +47,7 @@ class Meeting(models.Model):
     @property
     def date_in_full(self):
         day = self.date.strftime('%d')
-        month = self.date.strftime('%B')
+        month = months_names['pt_BR'][self.date.strftime('%m')]
         year = self.date.strftime('%Y')
 
         if day == '01':
