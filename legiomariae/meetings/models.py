@@ -122,9 +122,25 @@ class MinuteMeeting(models.Model):
     def built_text_minute_introduction(self):
         meeting = self.meeting
         address = meeting.organization.addresses.all()[0]
+        organization = meeting.organization
+        preposition_inital_prayer = 'com' if meeting.initial_prayer else 'sem'
+        rosary_prayer = 'seguidas do' if meeting.rosary_prayer else 'sem o'
+
         final_text = f'{meeting.date_in_full}, às {meeting.start_at_in_full}, {meeting.place_address}, ' \
-                     f'{address.state.name} - {address.state.acronym}'
+                     f'{address.state.name} - {address.state.acronym}, ' \
+                     f'iniciou-se mais uma reunião semanal do ' \
+                     f'{organization.organization_type.name.lower()} {organization.full_name}, ' \
+                     f'sob a proteção de Nossa Senhora, ' \
+                     f'{preposition_inital_prayer} as orações iniciais da tessera ' \
+                     f'{rosary_prayer} santo terço. '
+
         return final_text
+
+    def build_text_for_spiritual_read(self):
+        meeting = self.meeting
+        spiritual_read = meeting.spiritual_read
+
+        return f'A leitura espiritual foi retirada de {spiritual_read}.'
 
     def create_minute_meeting(self, meeting_id = None):
         meeting_id = meeting_id or self.meeting
@@ -132,11 +148,11 @@ class MinuteMeeting(models.Model):
             raise ValueError('The meeting id is missing!')
 
         meeting = Meeting.objects.filter(id=meeting_id)[0]
-        minute = meeting.minutemeeting
+        minute_meeting = meeting.minutemeeting
 
         data = {
             'meeting': meeting,
-            'minute': minute
+            'minute_meeting': minute_meeting
         }
 
         return self.build_minute_text(data)
@@ -144,13 +160,11 @@ class MinuteMeeting(models.Model):
     def build_minute_text(self, data=None):
         if data is None:
             raise ValueError('Data to build minute is missing!')
+        minute_meeting = data['minute_meeting']
 
-        minute_text = f'{self.build_text_minute_title}\n' \
-                      f'{self.built_text_minute_introduction} ' \
-                      f'iniciou-se mais uma reunião semanal do praesidium Rosa Mística, ' \
-                      f'sob a proteção de Nossa Senhora, com as orações iniciais da tessera ' \
-                      f'seguidas do santo terço. ' \
-                      f'A leitura espiritual foi retirada de Pr 18, 21. ' \
+        minute_text = f'{minute_meeting.build_text_minute_title}\n' \
+                      f'{minute_meeting.built_text_minute_introduction} ' \
+                      f'minute_meetingf{minute_meeting.build_text_for_spiritual_read} ' \
                       f'Foi feita a leitura da ata 843, assinada pela presidente, ' \
                       f'irmã Mariel com a seguinte observação: ' \
                       f'dentre as despesas no relatório da tesouraria ' \
