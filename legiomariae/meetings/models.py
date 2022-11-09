@@ -99,7 +99,7 @@ class WelcomeGuest(models.Model):
         return f'Boas vindas de {self.member.complete_name} a {self.guest_name}'
 
 
-class MinuteMeeting(models.Model):
+class MeetingMinute(models.Model):
     minute_number = models.CharField(max_length=7, verbose_name='Número da Ata', null=True, blank=True)
     description = models.TextField(verbose_name='Descrição completa da Ata', default='### NÃO PREENCHIDA ###')
     meeting = models.OneToOneField(Meeting, verbose_name='Reunião', on_delete=models.CASCADE)
@@ -142,17 +142,17 @@ class MinuteMeeting(models.Model):
 
         return f'A leitura espiritual foi retirada de {spiritual_read}.'
 
-    def create_minute_meeting(self, meeting_id = None):
+    def create_meeting_minute(self, meeting_id = None):
         meeting_id = meeting_id or self.meeting
         if not meeting_id:
             raise ValueError('The meeting id is missing!')
 
         meeting = Meeting.objects.filter(id=meeting_id)[0]
-        minute_meeting = meeting.minutemeeting
+        meeting_minute = meeting.meetingminute
 
         data = {
             'meeting': meeting,
-            'minute_meeting': minute_meeting
+            'meeting_minute': meeting_minute
         }
 
         return self.build_minute_text(data)
@@ -160,11 +160,11 @@ class MinuteMeeting(models.Model):
     def build_minute_text(self, data=None):
         if data is None:
             raise ValueError('Data to build minute is missing!')
-        minute_meeting = data['minute_meeting']
+        meeting_minute = data['meeting_minute']
 
-        minute_text = f'{minute_meeting.build_text_minute_title}\n' \
-                      f'{minute_meeting.built_text_minute_introduction} ' \
-                      f'minute_meetingf{minute_meeting.build_text_for_spiritual_read} ' \
+        minute_text = f'{meeting_minute.build_text_minute_title}\n' \
+                      f'{meeting_minute.built_text_minute_introduction} ' \
+                      f'meeting_minutef{meeting_minute.build_text_for_spiritual_read} ' \
                       f'Foi feita a leitura da ata 843, assinada pela presidente, ' \
                       f'irmã Mariel com a seguinte observação: ' \
                       f'dentre as despesas no relatório da tesouraria ' \
@@ -200,12 +200,10 @@ class MinuteMeeting(models.Model):
         return minute_text
 
 
-
-
-class MinuteMeetingReaded(models.Model):
+class MeetingMinuteReaded(models.Model):
     observations = models.TextField(verbose_name='Observações', null=True, blank=True)
     meeting = models.ForeignKey(Meeting, verbose_name='Reunião em que foi lida', on_delete=models.CASCADE, related_name='in_meeting_readed')
-    minute = models.ForeignKey(MinuteMeeting, verbose_name='Ata Lida', on_delete=models.CASCADE, related_name='minute_readed')
+    minute = models.ForeignKey(MeetingMinute, verbose_name='Ata Lida', on_delete=models.CASCADE, related_name='minute_readed')
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

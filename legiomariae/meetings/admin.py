@@ -1,7 +1,7 @@
 from django.contrib import admin
 from nested_admin import NestedModelAdmin, NestedStackedInline
 
-from .models import Meeting, MeetingOrganizationJoin, WelcomeGuest, MinuteMeeting, MinuteMeetingReaded
+from .models import Meeting, MeetingOrganizationJoin, WelcomeGuest, MeetingMinute, MeetingMinuteReaded
 from .forms import WelcomeGuestForm
 
 from treasuries.models import TreasuryReport, Expense
@@ -21,14 +21,14 @@ class WelcomeGuestInline(NestedStackedInline):
     form = WelcomeGuestForm
 
 
-class MinuteMeetingInline(NestedStackedInline):
-    model = MinuteMeeting
+class MeetingMinuteInline(NestedStackedInline):
+    model = MeetingMinute
     extra = 1
     max_num = 1
 
 
-class MinuteMeetingReadedInline(NestedStackedInline):
-    model = MinuteMeetingReaded
+class MeetingMinuteReadedInline(NestedStackedInline):
+    model = MeetingMinuteReaded
     extra = 1
 
 
@@ -95,12 +95,12 @@ class WorkReportInline(NestedStackedInline):
 @admin.register(Meeting)
 class MeetingAdmin(NestedModelAdmin):
     inlines = [MeetingOrganizationJoinInline, WelcomeGuestInline,
-               MinuteMeetingInline, MinuteMeetingReadedInline,
+               MeetingMinuteInline, MeetingMinuteReadedInline,
                TreasuryReportInline, ManualReadingInline,
                AttendenceSheetInline, WorkSheetInline,
                WorkReportInline]
 
 
-@admin.register(MinuteMeeting)
-class MinuteMeetingAdmin(admin.ModelAdmin):
-    change_form_template = 'meetings/minute_meeting/custom_change_form.html'
+@admin.register(MeetingMinute)
+class MeetingMinuteAdmin(admin.ModelAdmin):
+    change_form_template = 'meetings/meeting_minute/custom_change_form.html'

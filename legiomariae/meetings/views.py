@@ -4,12 +4,12 @@ from django.http import JsonResponse
 from .models import Meeting
 
 
-def generate_minute_meeting(request, meeting_id):
+def generate_meeting_minute(request, meeting_id):
     meeting_id = int(meeting_id)
     meeting = Meeting.objects.filter(id=meeting_id)[0]
-    minute = meeting.minutemeeting
+    minute = meeting.meetingminute
 
-    data = {'meeting_text': minute.create_minute_meeting(meeting_id)}
+    data = {'meeting_text': minute.create_meeting_minute(meeting_id)}
 
     return JsonResponse(data, safe=False)
 
