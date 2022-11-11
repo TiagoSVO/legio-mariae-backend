@@ -17,6 +17,7 @@ class Meeting(models.Model):
     catena_prayer = models.BooleanField(verbose_name='Oração da Catena', default=True)
     allocutio = models.TextField(verbose_name='Allocutio', blank=True, null=True)
     announcements = models.TextField(verbose_name='Avisos e Outros Assuntos', blank=True, null=True)
+    orientations = models.TextField(verbose_name=f'Orientações', blank=True, null=True)
     final_observations = models.TextField(verbose_name='Observações Finais', blank=True, null=True)
     final_prayer = models.BooleanField(verbose_name='Orações Finais', default=True)
     end_at = models.TimeField(verbose_name='Final da Reunião')
