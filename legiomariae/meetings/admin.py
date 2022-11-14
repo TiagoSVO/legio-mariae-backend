@@ -23,36 +23,40 @@ class WelcomeGuestInline(NestedStackedInline):
 
 class MeetingMinuteInline(NestedStackedInline):
     model = MeetingMinute
-    extra = 1
+    extra = 0
+    min_num = 1
     max_num = 1
 
 
 class MeetingMinuteReadedInline(NestedStackedInline):
     model = MeetingMinuteReaded
-    extra = 1
+    extra = 0
+    min_num = 1
 
 
 class ExpenseInline(NestedStackedInline):
     model = Expense
-    extra = 1
+    extra = 0
+    min_num = 1
 
 
 class TreasuryReportInline(NestedStackedInline):
     model = TreasuryReport
-    extra = 1
-    max_num = 1
-
+    extra = 0
+    min_num = 1
     inlines = [ExpenseInline]
 
 
 class ManualReadedByInline(NestedStackedInline):
     model = ManualReadedBy
-    extra = 1
+    extra = 0
+    min_num = 1
 
 
 class ManualReadingInline(NestedStackedInline):
     model = ManualReading
-    extra = 1
+    extra = 0
+    min_num = 1
     max_num = 1
 
     inlines = [ManualReadedByInline]
@@ -60,7 +64,8 @@ class ManualReadingInline(NestedStackedInline):
 
 class AttendenceSheetMemberInline(NestedStackedInline):
     model = AttendenceSheetMember
-    extra = 1
+    extra = 0
+    min_num = 1
 
 
 class AttendenceSheetInline(NestedStackedInline):
@@ -71,26 +76,30 @@ class AttendenceSheetInline(NestedStackedInline):
 
 class WorkSheetItemMemberFiliationInline(NestedStackedInline):
     model = WorkSheetItemMemberFiliation
-    extra = 2
+    extra = 0
+    min_num = 2
 
 
 class WorkSheetItemInline(NestedStackedInline):
     model = WorkSheetItem
-    extra = 1
+    extra = 0
+    min_num = 1
 
     inlines = [WorkSheetItemMemberFiliationInline]
 
 
 class WorkSheetInline(NestedStackedInline):
     model = WorkSheet
-    extra = 1
+    extra = 0
+    min_num = 1
 
     inlines = [WorkSheetItemInline]
 
 
 class WorkReportInline(NestedStackedInline):
     model = WorkReport
-    extra = 1
+    extra = 0
+    min_num = 1
 
 @admin.register(Meeting)
 class MeetingAdmin(NestedModelAdmin):
