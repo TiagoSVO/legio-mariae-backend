@@ -9,7 +9,7 @@ class TreasuryReport(models.Model):
     previous_balance = MoneyField(max_digits=20, decimal_places=2, default_currency='BRL', verbose_name='Saldo Anterior')
     collection_day = MoneyField(max_digits=10, decimal_places=2, default_currency='BRL', verbose_name='Coleta do Dia')
     cash_balance = MoneyField(max_digits=20, decimal_places=2, default_currency='BRL', verbose_name='Saldo do Dia')
-    meeting = models.OneToOneField(Meeting, on_delete=models.CASCADE, verbose_name='Reunião')
+    meeting = models.ForeignKey(Meeting, on_delete=models.SET_NULL, verbose_name='Reunião', null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
