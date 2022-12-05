@@ -116,7 +116,7 @@ class WorkReport(models.Model):
     report_description = models.TextField(verbose_name='Relatório do Trabalho')
     work_sheet_item = models.OneToOneField(WorkSheetItem, on_delete=models.CASCADE,
                                            verbose_name='Item da Folha de Trabalhos')
-    meeting = models.OneToOneField(Meeting, verbose_name='Reunião Reportada', on_delete=models.SET_NULL,
+    meeting = models.ForeignKey(Meeting, verbose_name='Reunião Reportada', on_delete=models.SET_NULL,
                                    null=True, blank=True)
     work_report_status = models.ForeignKey(WorkReportStatus, on_delete=models.SET_NULL, blank=True, null=True)
 

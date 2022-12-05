@@ -24,7 +24,7 @@ class WelcomeGuestInline(NestedStackedInline):
 class MeetingMinuteInline(NestedStackedInline):
     model = MeetingMinute
     extra = 0
-    min_num = 1
+    min_num = 0
     max_num = 1
 
 
@@ -100,6 +100,7 @@ class WorkReportInline(NestedStackedInline):
     model = WorkReport
     extra = 0
     min_num = 1
+
 
 @admin.register(Meeting)
 class MeetingAdmin(NestedModelAdmin):
