@@ -1,4 +1,5 @@
 from django.db import models
+from django.template.loader import get_template
 
 from utils.utils import months_names
 from members.models import Member
@@ -66,6 +67,23 @@ class Meeting(models.Model):
         minute = self.start_at.strftime('%M')
         return f'{hour}h{minute}'
 
+    @property
+    def get_meeting_minute_number(self):
+        if self.meetingminute is not None:
+            return int(self.meetingminute.minute_number)
+        return 0
+
+    @property
+    def get_next_meeting_minute_number(self):
+        return str(int(self.get_meeting_minute_number) + 1)
+
+    @property
+    def previous_meeting_minute_number(self):
+        previous_number = int(self.get_meeting_minute_number) - 1
+        if previous_number <= 0:
+            previous_number = 1
+        return str(previous_number)
+
 
 class MeetingOrganizationJoin(models.Model):
     meeting = models.ForeignKey(Meeting, verbose_name='Reunião', on_delete=models.CASCADE)
@@ -104,6 +122,7 @@ class MeetingMinute(models.Model):
     minute_number = models.CharField(max_length=7, verbose_name='Número da Ata', null=True, blank=True)
     description = models.TextField(verbose_name='Descrição completa da Ata', default='### NÃO PREENCHIDA ###')
     meeting = models.OneToOneField(Meeting, verbose_name='Reunião', on_delete=models.CASCADE)
+    template_to_minute_meeting = models.ForeignKey('TemplateToMeetingMinute', on_delete=models.SET_NULL, blank=True, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -137,14 +156,16 @@ class MeetingMinute(models.Model):
 
         return final_text
 
+    @property
     def build_text_for_spiritual_read(self):
         meeting = self.meeting
         spiritual_read = meeting.spiritual_read
 
         return f'A leitura espiritual foi retirada de {spiritual_read}.'
 
-    def create_meeting_minute(self, meeting_id = None):
-        meeting_id = meeting_id or self.meeting
+    def create_meeting_minute(self, meeting_id=None, template_id=1):
+        template_meeting_minute = TemplateToMeetingMinute.objects.filter(id=template_id)[0]
+        meeting_id = meeting_id or self.meeting.id
         if not meeting_id:
             raise ValueError('The meeting id is missing!')
 
@@ -156,16 +177,18 @@ class MeetingMinute(models.Model):
             'meeting_minute': meeting_minute
         }
 
-        return self.build_minute_text(data)
+        return self.build_minute_text(data, template_meeting_minute)
 
-    def build_minute_text(self, data=None):
+    def build_minute_text(self, data=None, template_meeting_minute=None):
+        meeting = self.meeting
+        generated_template_with_context = template_meeting_minute.generate_formated_meeting_minute_with_context(meeting)
         if data is None:
             raise ValueError('Data to build minute is missing!')
         meeting_minute = data['meeting_minute']
 
         minute_text = f'{meeting_minute.build_text_minute_title}\n' \
                       f'{meeting_minute.built_text_minute_introduction} ' \
-                      f'meeting_minutef{meeting_minute.build_text_for_spiritual_read} ' \
+                      f'{meeting_minute.build_text_for_spiritual_read} ' \
                       f'Foi feita a leitura da ata 843, assinada pela presidente, ' \
                       f'irmã Mariel com a seguinte observação: ' \
                       f'dentre as despesas no relatório da tesouraria ' \
@@ -198,7 +221,55 @@ class MeetingMinute(models.Model):
                       f'Sem mais nenhum assunto a tratar, rezou-se as orações finais da tessera ' \
                       f'e encerrou-se a reunião às 11h39min.'
 
-        return minute_text
+        return generated_template_with_context
+
+
+class TemplateToMeetingMinute(models.Model):
+    name = models.CharField(max_length=255, verbose_name='Nome do Template')
+    description = models.TextField()
+    template_format = models.TextField()
+    organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, null=True, blank=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Modelo para Ata"
+        verbose_name_plural = "Modelos Para Atas"
+
+    def __str__(self):
+        organization_label = self.organization_label_to__str__
+        if organization_label:
+            return f'Modelo de Ata: {self.name} | {organization_label}'
+        return f'Modelo de Ata: {self.name}'
+
+    @property
+    def organization_label_to__str__(self):
+        organization = self.organization
+        return f'{organization.full_name}' if organization else ''
+
+    def generate_formated_meeting_minute_with_context(self, meeting):
+        replaced_template_format = self.template_format
+        context = self.context_to_template_format(meeting)
+        for variable_word, replacement_word in context.items():
+            replaced_template_format = replaced_template_format.replace('{{'+variable_word+'}}', replacement_word)
+        return replaced_template_format
+
+    def context_to_template_format(self, meeting=None):
+        try:
+            if meeting is None:
+                meeting = self.meeting
+
+            context = {
+                'meeting_minute_number': str(meeting.get_meeting_minute_number),
+                'full_date': meeting.date_in_full
+            }
+            return context
+        except ValueError:
+            raise ValueError
+
+
+
 
 
 class MeetingMinuteReaded(models.Model):

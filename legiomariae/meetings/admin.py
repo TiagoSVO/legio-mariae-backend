@@ -1,7 +1,8 @@
 from django.contrib import admin
 from nested_admin import NestedModelAdmin, NestedStackedInline
 
-from .models import Meeting, MeetingOrganizationJoin, WelcomeGuest, MeetingMinute, MeetingMinuteReaded
+from .models import Meeting, MeetingOrganizationJoin, WelcomeGuest, MeetingMinute, \
+                    MeetingMinuteReaded, TemplateToMeetingMinute
 from .forms import WelcomeGuestForm
 
 from treasuries.models import TreasuryReport, Expense
@@ -114,3 +115,8 @@ class MeetingAdmin(NestedModelAdmin):
 @admin.register(MeetingMinute)
 class MeetingMinuteAdmin(admin.ModelAdmin):
     change_form_template = 'meetings/meeting_minute/custom_change_form.html'
+
+
+@admin.register(TemplateToMeetingMinute)
+class TemplateToMeetingMinuteAdmin(admin.ModelAdmin):
+    pass
