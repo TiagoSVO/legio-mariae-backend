@@ -184,42 +184,6 @@ class MeetingMinute(models.Model):
         generated_template_with_context = template_meeting_minute.generate_formated_meeting_minute_with_context(meeting)
         if data is None:
             raise ValueError('Data to build minute is missing!')
-        meeting_minute = data['meeting_minute']
-
-        minute_text = f'{meeting_minute.build_text_minute_title}\n' \
-                      f'{meeting_minute.built_text_minute_introduction} ' \
-                      f'{meeting_minute.build_text_for_spiritual_read} ' \
-                      f'Foi feita a leitura da ata 843, assinada pela presidente, ' \
-                      f'irmã Mariel com a seguinte observação: ' \
-                      f'dentre as despesas no relatório da tesouraria ' \
-                      f'também estão inclusos os panfletos de divulgação dos Patrícios. ' \
-                      f'À chamada estavam presentes os irmãos: ' \
-                      f'Mariel, Mariane, Monique, Daniela, Rodrigo e Tiago. ' \
-                      f'Recrutamento: foi feito um convite para membro ativo durante a semana. ' \
-                      f'Foi lida a instrução permanente. Prestação de contas do trabalho semanal: ' \
-                      f'Divulgação do retiro foi realizado pelos irmãos Mariane, ' \
-                      f'Daniela e Rodrigo com 500 contatos e 1h de duração. ' \
-                      f'O trabalho foi realizado na missa das 12h de domingo ' \
-                      f'e duas pessoas vieram perguntar a respeito. Distribuição dos trabalhos: ' \
-                      f'Terço em família para Monique, Visita ao HFA para Rodrigo e Mariane, ' \
-                      f'Visita a membro auxiliar para Daniela e Mariel e Yeshua III para Tiago. ' \
-                      f'Todos rezaram a Catena Legionis. Allocutio: ' \
-                      f'Essa passagem remete ao poder da palavra e o impacto dela na vida das pessoas. ' \
-                      f'Palavras são tão fortes que Deus criou o mundo por meio delas e o salvou encarnando ' \
-                      f'sua palavra. Que nossa boca não seja um túmulo, mas um berçário que traga vida; ' \
-                      f'essas palavras que saem de nós devem vir para transformar positivamente a vida do outro. ' \
-                      f'Seguiu-se com a coleta secreta e foi lido o relatório da tesouraria de: ' \
-                      f'28/07/2019: saldo $17,00, coleta do dia $83,25 e saldo em caixa $100,25. ' \
-                      f'O estudo do manual foi retirado da página 243, capítulo 37, item 7 com o tema ' \
-                      f'“Obras a favor da juventude: uma fórmula legionária para a juventude” e foi comentado ' \
-                      f'por três irmãos. Avisos e outros assuntos: ' \
-                      f'11/08- Dia das vocações matrimoniais; Dia dos pais; ' \
-                      f'12/08- Dia internacional da juventude; ' \
-                      f'13/08- Beata Dulce dos Pobres, Início da Semana Nacional da Família; ' \
-                      f'15/08- Assunção de Nossa Senhora (indulgência plenária); ' \
-                      f'17/08- reunião de régia (14h); 18/08- Dia das vocações religiosas. ' \
-                      f'Sem mais nenhum assunto a tratar, rezou-se as orações finais da tessera ' \
-                      f'e encerrou-se a reunião às 11h39min.'
 
         return generated_template_with_context
 
@@ -262,14 +226,11 @@ class TemplateToMeetingMinute(models.Model):
 
             context = {
                 'meeting_minute_number': str(meeting.get_meeting_minute_number),
-                'full_date': meeting.date_in_full
+                'meeting_date_full': meeting.date_in_full
             }
             return context
         except ValueError:
             raise ValueError
-
-
-
 
 
 class MeetingMinuteReaded(models.Model):
