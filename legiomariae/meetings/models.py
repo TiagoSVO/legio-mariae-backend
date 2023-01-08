@@ -84,6 +84,10 @@ class Meeting(models.Model):
             previous_number = 1
         return str(previous_number)
 
+    @property
+    def attendence_sheet(self):
+        return self.attendencesheet if hasattr(self, 'attendencesheet') else None
+
 
 class MeetingOrganizationJoin(models.Model):
     meeting = models.ForeignKey(Meeting, verbose_name='Reunião', on_delete=models.CASCADE)
@@ -215,7 +219,8 @@ class TemplateToMeetingMinute(models.Model):
     def generate_formated_meeting_minute_with_context(self, meeting):
         replaced_template_format = self.template_format
         context = self.context_to_template_format(meeting)
-        for variable_word, replacement_word in context.items():
+        context_items = context.items()
+        for variable_word, replacement_word in context_items:
             replaced_template_format = replaced_template_format.replace('{{'+variable_word+'}}', replacement_word)
         return replaced_template_format
 
@@ -223,10 +228,42 @@ class TemplateToMeetingMinute(models.Model):
         try:
             if meeting is None:
                 meeting = self.meeting
+            organization = getattr(meeting, 'organization', None)
+            attendence_sheet = getattr(meeting, 'attendencesheet', None)
+            work_report = getattr(meeting, 'workreports', None)
+            treasury_report = getattr(meeting, 'treasuryreports', None)
+            manual_reading = getattr(meeting, 'manualreading', None)
 
             context = {
                 'meeting_minute_number': str(meeting.get_meeting_minute_number),
-                'meeting_date_full': meeting.date_in_full
+                'meeting_date_full': meeting.date_in_full,
+                'meeting_start_at': '',
+                'meeting_place_address': '',
+                'organization_type': '',
+                'organization_name': '',
+                'meeting_spiritual_read': '',
+                'meeting_minute_readed': '',
+                'member_filiation_chaired': '',
+                'attendencesheet_presents': '',
+                'attendencesheet_justified': '',
+                'attendencesheet_absents': '',
+                'attendencesheet_invites': '',
+                'attendencesheet_recruitment': '',
+                'workreports': '',
+                'meeting_allocutio': '',
+                'treasury_report_date': '',
+                'treasury_report_previous_balance': '',
+                'treasury_report_collection_day': '',
+                'treasury_report_expenses': '',
+                'treasury_report_cash_balance': '',
+                'manual_reading_page': '',
+                'manual_reading_chapter': '',
+                'manual_reading_item': '',
+                'manual_reading_theme': '',
+                'manual_reading_number_people_comented': '',
+                'meeting_announcements': '',
+                'meeting_end_at': '',
+                'meeting_sign_date': '',
             }
             return context
         except ValueError:
