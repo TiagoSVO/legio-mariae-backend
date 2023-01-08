@@ -88,6 +88,16 @@ class Meeting(models.Model):
     def attendence_sheet(self):
         return self.attendencesheet if hasattr(self, 'attendencesheet') else None
 
+    @property
+    def minutes_readed(self):
+        return self.meetingminutereaded_set.all()
+
+    @property
+    def minutes_readed_formatted_to_minute(self):
+        minutes_readed = list(self.minutes_readed)
+        return f'Leitura das atas {", ".join(minutes_readed[:-1])} e {minutes_readed[-1]}' if len(minutes_readed) > 1 else f'Leitura da Ata {minutes_readed[0]}'
+
+
 
 class MeetingOrganizationJoin(models.Model):
     meeting = models.ForeignKey(Meeting, verbose_name='Reunião', on_delete=models.CASCADE)
@@ -222,6 +232,7 @@ class TemplateToMeetingMinute(models.Model):
         context_items = context.items()
         for variable_word, replacement_word in context_items:
             replaced_template_format = replaced_template_format.replace('{{'+variable_word+'}}', replacement_word)
+
         return replaced_template_format
 
     def context_to_template_format(self, meeting=None):
@@ -235,35 +246,35 @@ class TemplateToMeetingMinute(models.Model):
             manual_reading = getattr(meeting, 'manualreading', None)
 
             context = {
-                'meeting_minute_number': str(meeting.get_meeting_minute_number),
-                'meeting_date_full': meeting.date_in_full,
-                'meeting_start_at': '',
-                'meeting_place_address': '',
-                'organization_type': '',
-                'organization_name': '',
-                'meeting_spiritual_read': '',
-                'meeting_minute_readed': '',
-                'member_filiation_chaired': '',
-                'attendencesheet_presents': '',
-                'attendencesheet_justified': '',
-                'attendencesheet_absents': '',
-                'attendencesheet_invites': '',
-                'attendencesheet_recruitment': '',
-                'workreports': '',
-                'meeting_allocutio': '',
-                'treasury_report_date': '',
-                'treasury_report_previous_balance': '',
-                'treasury_report_collection_day': '',
-                'treasury_report_expenses': '',
-                'treasury_report_cash_balance': '',
-                'manual_reading_page': '',
-                'manual_reading_chapter': '',
-                'manual_reading_item': '',
-                'manual_reading_theme': '',
-                'manual_reading_number_people_comented': '',
-                'meeting_announcements': '',
-                'meeting_end_at': '',
-                'meeting_sign_date': '',
+                'meeting_minute_number': str(getattr(meeting, 'get_meeting_minute_number', '')),
+                'meeting_date_full': getattr(meeting, 'date_in_full', ''),
+                'meeting_start_at_in_full': getattr(meeting, 'start_at_in_full', ''),
+                'meeting_place_address': getattr(meeting, 'place_address', ''),
+                'organization_type_name': getattr(organization, 'type_name', ''),
+                'organization_full_name': getattr(organization, 'full_name', ''),
+                'meeting_spiritual_read': getattr(meeting, 'spiritual_read', ''),
+                'meeting_minutes_readed': getattr(meeting, 'minutes_readed_formatted_to_minute', ''),
+                'member_filiation_chaired': getattr(meeting, 'spiritual_read', ''),
+                'attendencesheet_presents': getattr(meeting, 'spiritual_read', ''),
+                'attendencesheet_justified': getattr(meeting, 'spiritual_read', ''),
+                'attendencesheet_absents': getattr(meeting, 'spiritual_read', ''),
+                'attendencesheet_invites': getattr(meeting, 'spiritual_read', ''),
+                'attendencesheet_recruitment': getattr(meeting, 'spiritual_read', ''),
+                'workreports': getattr(meeting, 'spiritual_read', ''),
+                'meeting_allocutio': getattr(meeting, 'spiritual_read', ''),
+                'treasury_report_date': getattr(meeting, 'spiritual_read', ''),
+                'treasury_report_previous_balance': getattr(meeting, 'spiritual_read', ''),
+                'treasury_report_collection_day': getattr(meeting, 'spiritual_read', ''),
+                'treasury_report_expenses': getattr(meeting, 'spiritual_read', ''),
+                'treasury_report_cash_balance': getattr(meeting, 'spiritual_read', ''),
+                'manual_reading_page': getattr(meeting, 'spiritual_read', ''),
+                'manual_reading_chapter': getattr(meeting, 'spiritual_read', ''),
+                'manual_reading_item': getattr(meeting, 'spiritual_read', ''),
+                'manual_reading_theme': getattr(meeting, 'spiritual_read', ''),
+                'manual_reading_number_people_comented': getattr(meeting, 'spiritual_read', ''),
+                'meeting_announcements': getattr(meeting, 'spiritual_read', ''),
+                'meeting_end_at': getattr(meeting, 'spiritual_read', ''),
+                'meeting_sign_date': getattr(meeting, 'spiritual_read', ''),
             }
             return context
         except ValueError:

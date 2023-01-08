@@ -73,6 +73,11 @@ class Organization(models.Model):
         address = self.addresses.first()
         return f'{address.linked_church}' if address else '-'
 
+    @property
+    def type_name(self):
+        organization_type = self.organization_type
+        return getattr(organization_type, 'name', '')
+
 
 class OrganizationAddress(Address):
     linked_church = models.CharField(max_length=255, verbose_name="Nome da Igreja Vinculada", null=True, blank=True)
